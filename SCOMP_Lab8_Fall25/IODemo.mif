@@ -1,0 +1,198 @@
+WIDTH=16;
+DEPTH=2048;
+
+ADDRESS_RADIX=HEX;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+0000: 9000; -- 	IN     Switches
+0001: 9801; -- 	OUT    LEDs
+0002: 1804; --   LOADI 4
+0003: 10B0; --   STORE random
+0004: 9804; --   OUT Hex0
+0005: 1800; --   LOADI 0
+0006: 10B1; --   STORE score
+0007: 9805; --   OUT Hex1
+0008: 9000; --     IN Switches
+0009: 10B2; --  	STORE SwitchPattern
+000A: 38AD; --     AND Bit0
+000B: 10B3; --     STORE SW0
+000C: 08B2; --     LOAD SwitchPattern
+000D: 5011; --     SHIFT -1
+000E: 38AD; --     AND Bit0
+000F: 10B4; --     STORE SW1
+0010: 08B2; --     LOAD SwitchPattern
+0011: 5012; --     SHIFT -2
+0012: 38AD; --     AND Bit0
+0013: 10B5; --     STORE SW2
+0014: 08B2; --     LOAD SwitchPattern
+0015: 5013; --     SHIFT -3
+0016: 38AD; --     AND Bit0
+0017: 10B6; --     STORE SW3
+0018: 08B2; --     LOAD SwitchPattern
+0019: 5014; --     SHIFT -4
+001A: 38AD; --     AND Bit0
+001B: 10B7; --     STORE SW4
+001C: 08B2; --     LOAD SwitchPattern
+001D: 5015; --     SHIFT -5
+001E: 38AD; --     AND Bit0
+001F: 10B8; --     STORE SW5
+0020: 08B2; --     LOAD SwitchPattern
+0021: 5016; --     SHIFT -6
+0022: 38AD; --     AND Bit0
+0023: 10B9; --     STORE SW6
+0024: 08B2; --     LOAD SwitchPattern
+0025: 5017; --     SHIFT -7
+0026: 38AD; --     AND Bit0
+0027: 10BA; --     STORE SW7
+0028: 08B2; --     LOAD SwitchPattern
+0029: 5018; --     SHIFT -8
+002A: 38AD; --     AND Bit0
+002B: 10BB; --     STORE SW8
+002C: 08B2; --     LOAD SwitchPattern
+002D: 5019; --     SHIFT -9
+002E: 38AD; --     AND Bit0
+002F: 10BC; --     STORE SW9
+0030: 08B2; --     LOAD SwitchPattern
+0031: 08B3; --     LOAD SW0
+0032: 20B4; --     ADD SW1
+0033: 20B5; --     ADD SW2
+0034: 20B6; --     ADD SW3
+0035: 20B7; --     ADD SW4
+0036: 20B8; --     ADD SW5
+0037: 20B9; --     ADD SW6
+0038: 20BA; --     ADD SW7
+0039: 20BB; --     ADD SW8
+003A: 20BC; --     ADD SW9
+003B: 703D; --     JZERO Round
+003C: 5808; --     JUMP WaitForTwoSwitches
+003D: 9000; -- 	IN     Switches
+003E: 9801; -- 	OUT    LEDs
+003F: 9000; --     IN Switches
+0040: 9801; --     OUT LEDs
+0041: 10B2; --  	  STORE SwitchPattern
+0042: 38AD; --     AND Bit0
+0043: 10B3; --     STORE SW0
+0044: 08B2; --     LOAD SwitchPattern
+0045: 5011; --     SHIFT -1
+0046: 38AD; --     AND Bit0
+0047: 10B4; --     STORE SW1
+0048: 08B2; --     LOAD SwitchPattern
+0049: 5012; --     SHIFT -2
+004A: 38AD; --     AND Bit0
+004B: 10B5; --     STORE SW2
+004C: 08B2; --     LOAD SwitchPattern
+004D: 5013; --     SHIFT -3
+004E: 38AD; --     AND Bit0
+004F: 10B6; --     STORE SW3
+0050: 08B2; --     LOAD SwitchPattern
+0051: 5014; --     SHIFT -4
+0052: 38AD; --     AND Bit0
+0053: 10B7; --     STORE SW4
+0054: 08B2; --     LOAD SwitchPattern
+0055: 5015; --     SHIFT -5
+0056: 38AD; --     AND Bit0
+0057: 10B8; --     STORE SW5
+0058: 08B2; --     LOAD SwitchPattern
+0059: 5016; --     SHIFT -6
+005A: 38AD; --     AND Bit0
+005B: 10B9; --     STORE SW6
+005C: 08B2; --     LOAD SwitchPattern
+005D: 5017; --     SHIFT -7
+005E: 38AD; --     AND Bit0
+005F: 10BA; --     STORE SW7
+0060: 08B2; --     LOAD SwitchPattern
+0061: 5018; --     SHIFT -8
+0062: 38AD; --     AND Bit0
+0063: 10BB; --     STORE SW8
+0064: 08B2; --     LOAD SwitchPattern
+0065: 5019; --     SHIFT -9
+0066: 38AD; --     AND Bit0
+0067: 10BC; --     STORE SW9
+0068: 08B2; --     LOAD SwitchPattern
+0069: 08B3; --     LOAD SW0
+006A: 20B4; --     ADD SW1
+006B: 20B5; --     ADD SW2
+006C: 20B6; --     ADD SW3
+006D: 20B7; --     ADD SW4
+006E: 20B8; --     ADD SW5
+006F: 20B9; --     ADD SW6
+0070: 20BA; --     ADD SW7
+0071: 20BB; --     ADD SW8
+0072: 20BC; --     ADD SW9
+0073: 787D; --   JNZ RoundPartTwo
+0074: 8076; --   CALL LFSRLoop
+0075: 583D; --   JUMP Round
+0076: 9000; --   IN Switches
+0077: 9801; --   OUT LEDs
+0078: 08B0; --   LOAD random
+0079: 809A; --   CALL LFSR
+007A: 38AF; --   AND LowTenBits
+007B: 10B0; --   STORE random
+007C: 8800; --   RETURN
+007D: 9000; --   IN Switches
+007E: 9801; --   OUT LEDs
+007F: 08B1; --   LOAD score
+0080: 9805; --   OUT Hex1
+0081: 1801; --     LOADI 1
+0082: 9802; --     OUT Timer
+0083: 08B0; --   LOAD random
+0084: 9804; --   OUT Hex0
+0085: 808F; --   CALL Delay
+0086: 9000; --   IN Switches
+0087: 9801; --   OUT LEDs
+0088: 28B0; --   SUB random
+0089: 7808; --   JNZ WaitForTwoSwitches
+008A: 08B1; --     LOAD score
+008B: 3001; --     ADDI 1
+008C: 10B1; --     STORE score
+008D: 9805; --     OUT Hex1
+008E: 5808; --     JUMP WaitForTwoSwitches
+008F: 9000; --   IN Switches
+0090: 9801; --   OUT LEDs
+0091: 08B1; --   LOAD score
+0092: 9805; --   OUT Hex1
+0093: 9802; -- 	OUT    Timer
+0094: 9000; -- 	IN Switches
+0095: 9801; --     OUT LEDs
+0096: 9002; -- 	IN     Timer
+0097: 37CE; -- 	ADDI   -50
+0098: 6094; -- 	JNEG   WaitingLoop
+0099: 8800; -- 	RETURN
+009A: 10A8; -- LFSR: STORE ACValue
+009B: 5014; -- SHIFT -4
+009C: 38A7; -- AND One
+009D: 10A9; -- STORE Bit4
+009E: 08A8; -- LOAD ACValue
+009F: 5019; -- SHIFT -9
+00A0: 38A7; -- AND One
+00A1: 48A9; -- XOR Bit4
+00A2: 10AA; -- STORE XORValue
+00A3: 08A8; -- LOAD ACValue
+00A4: 5001; -- SHIFT 1
+00A5: 20AA; -- ADD XORValue
+00A6: 8800; -- RETURN
+00A7: 0001; -- One: DW 1
+00A8: 0000; -- ACValue: DW 0
+00A9: 0000; -- Bit4: DW 0
+00AA: 0000; -- XORValue: DW 0
+00AB: 0000; -- Storage: DW 0
+00AC: 0000; -- Pattern:   DW 0
+00AD: 0001; -- Bit0:      DW &B0000000001
+00AE: 0200; -- Bit9:      DW &B1000000000
+00AF: 03FF; -- LowTenBits: DW &B01111111111
+00B0: 0000; -- random: DW 0
+00B1: 0000; -- score: DW 0
+00B2: 0000; -- SwitchPattern: DW 0
+00B3: 0000; -- SW0: DW 0
+00B4: 0000; -- SW1: DW 0
+00B5: 0000; -- SW2: DW 0
+00B6: 0000; -- SW3: DW 0
+00B7: 0000; -- SW4: DW 0
+00B8: 0000; -- SW5: DW 0
+00B9: 0000; -- SW6: DW 0
+00BA: 0000; -- SW7: DW 0
+00BB: 0000; -- SW8: DW 0
+00BC: 0000; -- SW9: DW 0
+[00BD..07FF] : 0000; -- [empty memory]
+END;
